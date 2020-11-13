@@ -9,12 +9,19 @@ fi
 
 . ${HOME}/${1}.env
 
+if [ $# -lt 2 ]
+then
+ pdb=cdb\$root
+else
+ pdb=${2}
+fi
+
 sqlplus / as sysdba << EOF
 
 set echo on
 alter system checkpoint;
 alter system switch logfile;
---ALTER SESSION SET CONTAINER=${2};
+--ALTER SESSION SET CONTAINER=${pdb};
 
 Show pdbs
 
