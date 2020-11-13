@@ -1,0 +1,1 @@
+tfactl diagcollect -srdc dbperf

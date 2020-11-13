@@ -1,0 +1,1 @@
+tfactl print config

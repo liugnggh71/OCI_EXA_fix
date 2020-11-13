@@ -1,0 +1,44 @@
+--      Job Failed with ORA-08102 (Doc ID 2652872.1)
+-- Dumping diagnostic data in directory=[cdmp_20200820030556], requested by (instance=2, osid=241185 (J001)), summary=[abnormal process termination].
+-- Thu Aug 20 03:05:58 2020
+-- Errors in file /u02/app/oracle/diag/rdbms/sand_iad18t/SAND2/trace/SAND2_j001_241185.trc:
+-- ORA-12012: error on auto execute of job "THH_C4C"."BUILD_ACLS_JOB"
+-- ORA-08102: index key not found, obj# , file , block  ()
+-- ORA-08102: index key not found, obj# 7868, file 957, block 15609 (2)
+-- ORA-27368: job execution abandoned
+-- ORA-27368: job execution abandoned
+--SQL> show pdbs
+--
+--    CON_ID CON_NAME                       OPEN MODE  RESTRICTED
+------------ ------------------------------ ---------- ----------
+--         2 PDB$SEED                       READ ONLY  NO
+--         3 SPDB1                          READ WRITE NO
+--         4 HRSAND01                       READ WRITE NO
+--         5 CMSAND01                       READ WRITE NO
+--SQL> alter session set container=HRSAND01;
+--
+--Session altered.
+--
+--SQL> alter index sys.i_scheduler_job1 rebuild;
+--
+--Index altered.
+--
+--SQL> alter session set container=CMSAND01;
+--
+--Session altered.
+--
+--SQL> alter index sys.i_scheduler_job1 rebuild;
+--alter index sys.i_scheduler_job1 rebuild
+--                *
+--ERROR at line 1:
+--ORA-00054: resource busy and acquire with NOWAIT specified or timeout expired
+--
+--
+--SQL> alter index sys.i_scheduler_job1 rebuild;
+--
+--Index altered.
+--
+--SQL>
+--
+
+alter index sys.i_scheduler_job1 rebuild;

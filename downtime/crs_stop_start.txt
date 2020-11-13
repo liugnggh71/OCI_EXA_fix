@@ -1,0 +1,6 @@
+. oraenv
++ASM1
+
+crsctl stop crs
+crsctl start crs
+crsctl check crs
